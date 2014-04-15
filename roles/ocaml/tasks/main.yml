@@ -1,0 +1,48 @@
+---
+- name: Install build-essential
+  apt: pkg=build-essential
+
+- name: Install m4 macro processor
+  apt: pkg=m4
+
+- name: Install pkg-config (needed by sqlite3-ocaml)
+  apt: pkg=pkg-config
+
+- name: Install libsqlite3-dev (needed by sqlite3-ocaml)
+  apt: pkg=libsqlite3-dev
+
+- name: Add PPA for OPAM
+  apt_repository: repo=ppa:avsm/ppa
+
+- name: Update apt cache
+  apt: update_cache=yes
+ 
+- name: Install OCaml
+  apt: pkg=ocaml
+
+- name: Install OCaml extras (for camlp4orf, needed by ulex)
+  apt: pkg=camlp4-extra
+
+- name: Install OPAM
+  apt: pkg=opam
+
+- name: Initialize OPAM
+  command: opam init -y
+  sudo: false
+
+- name: Install core
+  shell: eval `opam config env` && opam install -y core
+  sudo: false
+
+- name: Install sqlite3-ocaml
+  shell: eval `opam config env` && opam install -y sqlite3-ocaml
+  sudo: false
+
+- name: Install orm
+  shell: eval `opam config env` && opam install -y orm
+  sudo: false
+
+- name: Install Opium
+  shell: eval `opam config env` && opam install -y opium
+  sudo: false
+
