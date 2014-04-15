@@ -8,6 +8,9 @@
 - name: Install libffi-dev
   apt: pkg=libffi-dev
 
+- name: Install libssl-dev
+  apt: pkg=libssl-dev
+
 - name: Install pkg-config (needed by sqlite3-ocaml)
   apt: pkg=pkg-config
 
