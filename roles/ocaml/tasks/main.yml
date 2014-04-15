@@ -5,6 +5,9 @@
 - name: Install m4 macro processor
   apt: pkg=m4
 
+- name: Install libffi-dev
+  apt: pkg=libffi-dev
+
 - name: Install pkg-config (needed by sqlite3-ocaml)
   apt: pkg=pkg-config
 
