@@ -29,6 +29,9 @@
 - name: Install OCaml extras (for camlp4orf, needed by ulex)
   apt: pkg=camlp4-extra
 
+- name: Install OCaml native compilers (needed for cohttp)
+  apt: pkg=ocaml-native-compilers
+
 - name: Install OPAM
   apt: pkg=opam
 
@@ -46,6 +49,14 @@
 
 - name: Install orm
   shell: eval `opam config env` && opam install -y orm
+  sudo: false
+
+- name: Install async_ssl
+  shell: eval `opam config env` && opam install -y async_ssl
+  sudo: false
+
+- name: Install cohttp
+  shell: eval `opam config env` && opam install -y cohttp
   sudo: false
 
 - name: Install Opium
